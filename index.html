@@ -85,7 +85,24 @@
         .aurora-overlay.active {
             opacity: 1;
         }
-
+         @media (max-width: 600px) {
+    .swiper {
+        width: 100vw;
+        min-width: 100vw;
+        max-width: 100vw;
+        height: 250px; /* Match .home-poster max-height for consistency */
+        border-radius: 0;
+        margin-left: calc((100vw - 100vw) / 2); /* Center slider */
+        margin-right: 0;
+        background: #181f2e;
+    }
+    .swiper-slide img {
+        width: 100vw;
+        height: 250px;
+        object-fit: cover; /* Crop image to fill slider, like background */
+        border-radius: 0;
+    }
+}   
         @keyframes auroraMove {
             0%, 100% {
                 background-position: 0% 50%;
