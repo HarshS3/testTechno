@@ -6,7 +6,6 @@
     <title>IEEE Nirma</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto+Slab:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         * {
@@ -25,6 +24,9 @@
             min-height: 100vh;
             overflow-x: hidden; /* Prevent horizontal scrollbar from image overflow */
             position: relative;
+            width: 100%;
+            margin: 0;
+            padding: 0;
         }
 
         /* Grain/Noise Effect */
@@ -88,36 +90,16 @@
          @media (max-width: 600px) {
    .home-poster {
         width: 100vw;
-        max-width: 100vw;
-        height: 2500px;
-        min-height: 150px;
-        max-height: 250px;
+        max-width: none;
+        height: auto;
+        min-height: 200px;
+        max-height: 300px;
         object-fit: cover;
         display: block;
-        margin-left: auto;
-        margin-right: auto;
-        position: static;
-        left: auto;
+        margin: 0;
+        position: relative;
+        left: 0;
         transform: none;
-    }
-    .swiper {
-        width: 100vw;
-        max-width: 100vw;
-        height: 250px;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        border-radius: 0;
-        background: #181f2e;
-    }
-    .swiper-slide img {
-        width: 100vw;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 0;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
     }
 }   
         @keyframes auroraMove {
@@ -243,12 +225,21 @@
         main {
             margin-top: 90px; /* Aligns content right below nav bar */
             padding: 0; /* Remove padding here, as it's added to .container */
+            width: 100%;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem; /* Add horizontal padding to the content inside the container */
+        }
+        
+        /* Ensure full width for poster and slider */
+        .home-poster {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
         }
 
         /* Home Page */
@@ -273,6 +264,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
             object-fit: cover; /* Fill the area, cropping if aspect ratio doesn't match */
             /* No initial horizontal cropping for desktop */
+            max-width: none; /* Remove any max-width constraints */
         }
 
         /* Scrolling Text Styles */
@@ -286,6 +278,9 @@
             border-top: 1px solid rgba(139, 92, 246, 0.2); /* Lighter border */
             border-bottom: 1px solid rgba(139, 92, 246, 0.2); /* Lighter border */
             box-shadow: 0 0 15px rgba(139, 92, 246, 0.1), inset 0 0 10px rgba(139, 92, 246, 0.05); /* Subtler shadow */
+            width: 100vw; /* Full viewport width */
+            margin-left: calc(-50vw + 50%); /* Center and extend beyond container */
+            margin-right: calc(-50vw + 50%);
         }
 
         .scrolling-text-content {
@@ -462,55 +457,7 @@
         }
 
 
-        /* Image Slider Styles */
-        .image-slider-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 0.1rem 2rem;
-            background: rgba(18, 4, 88, 0.1);
-            margin-top: 3rem; /* Space after countdown timer */
-            margin-bottom: 2rem; /* Add some space before the footer */
-        }
-        .swiper {
-            width: 100%;
-            max-width: 900px;
-            height: 490px; /* Kept your specified height */
-            margin: 0 auto;
-            border-radius: 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            background: #181f2e;
-        }
-        .swiper-slide {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-        }
-        .swiper-slide img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain; /* ensures entire image is visible */
-            margin: 0 auto;
-            display: block;
-        }
-        /* Swiper pagination bullets with round border */
-        .swiper-pagination-bullet {
-            width: 18px;
-            height: 18px;
-            background: #181f2e;
-            border: 2.5px solid #8B5CF6;
-            border-radius: 50%;
-            opacity: 1;
-            margin: 0 10px !important;
-            box-sizing: border-box;
-            transition: background 0.2s, border 0.2s;
-        }
-        .swiper-pagination-bullet-active {
-            background: #8B5CF6;
-            border: 2.5px solid #fff;
-        }
+
         
 
         /* Responsive Design */
@@ -687,12 +634,8 @@
                 padding: 1rem 2rem;
                 font-size: 1rem;
             }
-            .swiper {
-                height: 380px; /* Adjust slider height for tablets */
-            }
-            .image-slider-section {
-                padding: 0.1rem 1rem; /* Adjust padding */
-            }
+
+
         }
 
         /* For screens 600px and below (typical smartphones) */
@@ -711,15 +654,15 @@
             }
 
             .home-poster {
-        width: 100vw;
-        margin-left: 0;
-        position: static;
-        left: auto;
-        transform: none;
-        min-height: 150px;
-        max-height: 250px;
-        object-fit: cover;
-    }
+                width: 100vw;
+                margin-left: 0;
+                position: static;
+                left: auto;
+                transform: none;
+                min-height: 150px;
+                max-height: 250px;
+                object-fit: cover;
+            }
 
             .hero-title {
                 font-size: 2.5rem;
@@ -751,12 +694,9 @@
                 padding: 0.9rem 1.8rem;
                 font-size: 0.95rem;
             }
-            .swiper {
-                height: 250px; /* Adjust slider height for phones */
-            }
-            .image-slider-section {
-                padding: 0.1rem 0.5rem; /* Adjust padding further */
-            }
+            
+
+            
             .footer-content {
                 flex-direction: column; /* Stack footer links vertically on smallest screens */
                 gap: 0.5rem;
@@ -850,22 +790,56 @@
                 </div>
                 <p id="event-message">The event has started! 🎉</p>
                 
-                <section class="image-slider-section">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="WEBDEV_poster.png" alt="Event Image 1" style="border-radius:7px;"></div>
-                            <div class="swiper-slide"><img src="gamedev_poster.png" alt="IEEE Team 1" style="width:100%;border-radius:7px;"></div>
-                            <div class="swiper-slide"><img src="Cloud_Computing_poster.png" alt="IEEE Team 2" style="width:100%;border-radius:8px;"></div>
-                            <div class="swiper-slide"><img src="blockchain_poster.png" alt="IEEE Team 2" style="width:100%;border-radius:8px;"></div>
+                <div id="default-carousel" class="relative w-full" data-carousel="slide">
+                    <!-- Carousel wrapper -->
+                    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                         <!-- Item 1 -->
+                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                            <img src="WEBDEV_poster.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="WebDev.AI Event">
                         </div>
-
+                        <!-- Item 2 -->
+                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                            <img src="gamedev_poster.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Game Dev Event">
+                        </div>
+                        <!-- Item 3 -->
+                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                            <img src="Cloud_Computing_poster.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Cloud Computing Event">
+                        </div>
+                        <!-- Item 4 -->
+                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                            <img src="blockchain_poster.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Blockchain Event">
+                        </div>
                     </div>
-                </section>
+                    <!-- Slider indicators -->
+                    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+                        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+                    </div>
+                    <!-- Slider controls -->
+                    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                            </svg>
+                            <span class="sr-only">Previous</span>
+                        </span>
+                    </button>
+                    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                            </svg>
+                            <span class="sr-only">Next</span>
+                        </span>
+                    </button>
+                </div>
             </div>
         </div>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     <script>
         // Effect Management
         function setEffect(effectType) {
@@ -936,14 +910,7 @@
         });
 
 
-        // Image Slider Management (using Swiper.js)
-        var swiper = new Swiper('.mySwiper', {
-            loop: true,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            },
-        });
+
 
         // Hamburger/Sidebar functionality
         const hamburgerBtn = document.getElementById('hamburgerBtn');
